@@ -443,3 +443,41 @@ footer strong {
   height: 500px;
   object-fit: cover;
 }
+.navbar {
+  background: var(--noir) !important;
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  font-family: var(--font-titre);
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: white !important;
+}
+
+.navbar-brand em {
+  font-style: normal;
+  color: var(--accent);
+  margin-left: 0.4rem;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--accent) !important;
+}
+
+.navbar-toggler {
+  border-color: var(--accent) !important;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
