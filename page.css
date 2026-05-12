@@ -1,0 +1,692 @@
+/*VARIABLES */
+:root {
+  --noir: #111;
+  --blanc: #f9f9f9;
+  --gris: #e5e5e5;
+  --accent: #c8a96e; /* or BMW */
+  --texte: #222;
+  --font-titre: 'Bebas Neue', sans-serif;
+  --font-corps: 'Inter', sans-serif;
+}
+
+/* BASE  */
+* {/* règle de base pour tous les éléments */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-corps);
+  background: var(--blanc);
+  color: var(--texte);
+  font-size: 1rem;
+  line-height: 1.6;/* pour un espacement confortable entre les lignes */
+  margin: 0;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent);
+  color: var(--noir);
+  padding: 10px 14px;
+  border-radius: 50%;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+}
+
+
+h1, h2, h3 {
+  font-family: var(--font-titre);
+  letter-spacing: 0.04em;/* espacement entre les lettres pour un look plus moderne */
+}
+
+h2 {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--noir);
+}
+
+h2 em { font-style: normal; color: var(--accent); }
+
+a {
+  text-decoration: none;
+  color: inherit;/* hérite de la couleur du parent pour les liens */
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/*  HEADER*/
+header {
+  background: var(--noir);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex; /* flexbox pour aligner logo et nav */
+  align-items: center;
+  justify-content: space-between; /* espace entre logo et nav */
+  flex-wrap: wrap; /* permet de passer en colonne sur mobile */
+  gap: 1rem; /* espace entre logo et nav sur mobile */
+  position: sticky; /* reste en haut lors du scroll */
+  top: 0; /* positionné en haut */
+  z-index: 100; /* au-dessus du reste du contenu */
+  transition: box-shadow 0.3s;
+}
+
+.logo {
+  font-family: var(--font-titre);
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: white;
+}
+
+.logo em {
+  font-style: normal;
+  color: var(--accent);
+  margin-left: 0.4rem;
+}
+
+nav {
+  display: flex;/* flexbox pour les liens de navigation */
+  align-items: center;
+  flex-wrap: wrap;/* permet de passer en ligne suivante sur mobile */
+  gap: 0.5rem 1.2rem;
+}
+
+nav a { /* liens de navigation */
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;/* transition pour un effet de survol plus fluide */
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+
+.hero {
+  height: 100vh; /* toute la hauteur écran */
+  background-image: url("images/Dark BMW M4 Competition Drift Wallpaper _ Black BMW Drifting with Smoke.jpeg");
+  background-size: cover; /* couvre tout l'espace disponible */
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative; /* pour positionner le texte par rapport à la section */
+  border-top: 3px solid var(--accent);
+}
+
+.hero-text {
+  position: absolute; /* positionné par rapport à .hero */
+  bottom: 3rem;/* place le texte à 3rem du bas de la section */
+  left: 3rem;
+  color: white;
+  animation: fadeIn 1.2s ease-in-out;/* animation pour faire apparaître le texte en douceur */
+}
+@keyframes fadeIn {/* animation pour faire apparaître le texte en douceur aider par l'ia*/
+  from {  
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {/* fin de l'animation : texte visible et à sa position normale */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-text h1 {
+  font-size: clamp(3rem, 8vw, 6rem);/* taille de police responsive qui s'adapte à la largeur de l'écran */
+  line-height: 1; /* réduit l'espacement entre les lignes pour un look plus compact */
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* ombre pour améliorer la lisibilité sur l'image */
+}
+
+.hero-text p {
+  margin: 0.8rem 0 1.5rem;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/*BOUTONS */
+.btn {
+  display: inline-block;/* pour que les boutons soient de taille adaptée à leur contenu et puissent être alignés avec du texte */
+  background: var(--accent);
+  color: var(--noir);
+  padding: 0.7rem 1.8rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: opacity 0.2s;
+}
+
+.btn:hover { opacity: 0.85; }
+
+.btn-outline {
+  display: inline-block;
+  border: 2px solid var(--noir);
+  color: var(--noir);
+  padding: 0.65rem 1.8rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: background 0.2s, color 0.2s;/* transition pour un effet de survol plus fluide */
+}
+
+.btn-outline:hover {
+  background: var(--noir);
+  color: white;
+}
+
+/*sections communes*/
+section {
+  padding: 4rem 2rem; /* espace autour du contenu de chaque section */
+}
+
+.section-alt {
+  background: var(--noir);
+  color: white;
+}
+
+.section-alt h2 {
+  color: white;
+}
+section h2 {
+  margin-bottom: 3rem;
+  letter-spacing: 0.08em;
+}
+
+
+/* forfaits */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* espace entre les cartes */
+  justify-content: center; /* centre les cartes horizontalement */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border: 2px solid var(--gris);
+  padding: 2rem;
+  flex: 1 1 250px;/*250px c'est le point de départ, mais la carte s'adapte selon la place disponible — elle grandit ou rétrécit toute seule si besoin.*/
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s; /* pour l'effet de soulèvement au survol */
+}
+
+.card:hover {
+  transform: translateY(-8px); /* soulève légèrement la carte au survol pour un effet de profondeur */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card-featured {
+  background: var(--noir);
+  color: white;
+  border-color: var(--accent);
+}
+
+.card-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.card h3 {
+  font-size: 1.8rem;
+}
+
+.card .price {
+  font-size: 2rem;
+  font-family: var(--font-titre);
+}
+
+.card .price span {
+  font-size: 1rem;
+  font-family: var(--font-corps);
+  opacity: 0.6;
+}
+
+.card ul {
+  list-style: none;
+  flex: 1; /* pousse la liste pour remplir l'espace restant et aligner le bouton en bas */
+}
+
+.card ul li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  font-size: 0.9rem;
+}
+
+.card-featured ul li {
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+
+/*AVIS CLIENTS */
+#avis .cards {
+  align-items: stretch;/* pour que toutes les cartes aient la même hauteur, même si le contenu est différent */
+}
+
+#avis .card {
+  text-align: center;
+  background: white;
+  border: 2px solid var(--gris);
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+#avis .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+#avis .card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--texte);
+  opacity: 0.9;
+}
+
+#avis .card h3 {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+#avis .card .stars {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent);
+}
+
+
+/* NOS CHIFFRES */
+#stats {
+  text-align: center;
+  background: var(--noir);
+}
+
+#stats h2 {
+  color: white;
+}
+
+#stats .cards {
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+#stats .card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(200, 169, 110, 0.3);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#stats .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  border-color: var(--accent);
+}
+
+#stats .card h3 {
+  font-size: 2.6rem;
+  color: var(--accent);
+  font-family: var(--font-titre);
+  margin-bottom: 0.5rem;
+}
+
+#stats .card p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+
+/*POURQUOI NOUS*/
+#pourquoi {
+  text-align: center;
+}
+
+#pourquoi .cards {
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+#pourquoi .card {
+  background: linear-gradient(to bottom, #fff, #fafafa);
+  border: 1px solid var(--gris);
+  padding: 2.5rem 2rem;
+  border-radius: 14px;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+/* petit effet ligne dorée dans le contenu */
+#pourquoi .card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+#pourquoi .card p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+#pourquoi .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+  border: 1px solid var(--accent);
+  background: #fff;
+}
+
+/*  PARTENAIRES*/
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.logos img {
+  height: 50px;
+  width: auto;
+  object-fit: contain; /* pour éviter la déformation des logos */
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.logos img:hover { opacity: 1; }
+
+/*galerie aider par l'ia*/
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);/* 4 colonnes de largeur égale */
+  grid-template-rows:   260px 260px;
+  gap: 5px;
+}
+
+/* Grande image en haut à gauche */
+.g-large {
+  grid-column: span 2;/* occupe 2 colonnes */
+  grid-row:    span 2;/* occupe 2 lignes */
+}
+
+.gitem {
+  position: relative;
+  overflow: hidden;/* pour que les images ne débordent pas de leur conteneur */
+}
+
+.gitem img {
+  width:      100%;
+  height:     100%;
+  max-width:  none;   /* annule le max-width global */
+  object-fit: cover;/* pour que les images remplissent leur conteneur sans déformation */
+  margin:     0;
+  border-radius: 0;
+  transition: transform .5s ease;
+}
+
+.gitem:hover img {
+  transform: scale(1.07);/* zoom léger au hover pour un effet dynamique */
+}
+
+/* Légende qui apparaît au hover */
+.gitem figcaption {
+  position:   absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,.65));
+  color:      #fff;
+  font-size:  .78rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding:    28px 14px 12px;
+  opacity:    0;
+  transform:  translateY(4px);
+  transition: all .3s ease;
+}
+
+.gitem:hover figcaption {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .galerie {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:   auto;
+  }
+  .g-large {
+    grid-column: span 2;
+    height: 210px;
+  }
+  .gitem { height: 170px; }
+}
+
+@media (max-width: 480px) {
+  .galerie {
+    grid-template-columns: 1fr;
+  }
+  .g-large { grid-column: auto; height: 200px; }
+  .gitem   { height: 180px; }
+}
+/*  EQUIPE*/
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.member {
+  text-align: center;
+  flex: 1 1 180px;
+  max-width: 220px; /* limite la largeur pour éviter que les membres ne deviennent trop larges sur grand écran */
+}
+
+.member img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover; /* pour que les photos remplissent le cercle sans déformation */
+  margin: 0 auto 1rem;
+  border: 3px solid var(--accent);
+}
+
+.member h3 {
+  font-size: 1.3rem;
+  color: white;
+}
+
+.member p {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  color: white;
+}
+
+/* FAQ */
+.faq {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+details {
+  border: 1px solid var(--gris);
+  padding: 1rem 1.2rem;
+  background: white;
+}
+
+details[open] p { color: rgba(54, 51, 51, 0.75); }
+
+summary {
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  list-style: none;
+}
+
+summary::after { /* ajoute un symbole + ou − à droite du résumé pour indiquer l'état ouvert/fermé 
+  aider par l'ia*/
+  content: ' +';
+  float: right;
+  color: var(--accent);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+details[open] summary::after {/* change le symbole en − lorsque le détail est ouvertaider par l'ia*/ 
+  content: ' −';
+}
+
+details p {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* LOCALISATION */
+.map-container {
+  display: flex;
+  justify-content: center;
+}
+
+.map-container iframe {
+  width: 80%;
+  height: 350px;
+  border: 0;
+  border-radius: 12px;
+}
+
+.map-text {
+  text-align: center;
+  margin-top: 1rem;
+  opacity: 0.8;
+}
+
+
+/* FORMULAIRE  */
+form {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  font-family: var(--font-corps);
+  font-size: 0.95rem;
+}
+
+input::placeholder, textarea::placeholder { /* couleur des placeholders pour une meilleure visibilité sur le fond sombre 
+  aider par l'ia*/
+  color: rgba(255,255,255,0.35);
+}
+
+textarea { resize: vertical; }
+
+button[type="submit"] {
+  background: var(--accent);
+  color: var(--noir);
+  border: none;
+  padding: 0.9rem;
+  font-family: var(--font-corps);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+button[type="submit"]:hover { opacity: 0.85; }
+
+#cta {
+  text-align: center;
+}
+
+#cta p {
+  margin: 1rem 0 1.5rem;
+  opacity: 0.8;
+}
+
+
+/* FOOTER  */
+footer {
+  background: #000;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+  border-top: 3px solid var(--accent);
+}
+
+footer strong {
+  color: white;
+}
+
+/* RESPONSIVE MOBILE  */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    left: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card { max-width: 100%; }
+
+  nav {
+    justify-content: center;
+  }
+}
